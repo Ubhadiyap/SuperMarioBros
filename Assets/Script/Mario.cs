@@ -27,27 +27,40 @@ public class Mario : MonoBehaviour {
         animator.SetInteger("Speed", (int)axis);
 
 
+
+        this.Run(axis);
+        this.TurnBack(axis);
+        this.StopRunning(axis);
+
+    }
+
+    //activate the animation "Run" of mario 
+    private void Run(float axis = 0f)
+    {
         if (axis > 0.01f)
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
             animator.SetBool("isRunning", true);
         }
 
-
         if (axis < -0.01f)
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
             animator.SetBool("isRunning", true);
         }
+    }
 
+    //deactivate the Run animation of mario
+    private void StopRunning(float axis = 0f)
+    {
         if ((int)axis == 0 && !Input.anyKey)
         {
             animator.SetBool("isRunning", false);
         }
-
     }
 
-    private void TurnBack(int axis)
+    // activate the turn function when the user change the input that is using at the momento of mario being running.
+    private void TurnBack(float axis = 0f)
     {
         bool inputRight = Input.GetKey("right");
         bool inputLeft = Input.GetKey("left");
