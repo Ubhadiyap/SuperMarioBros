@@ -23,8 +23,8 @@ public class Mario : MonoBehaviour {
     {
         float axis = Input.GetAxis("Horizontal");
 
-        rb.AddForce(Vector2.right * speed * axis);
-        animator.SetInteger("Speed", (int)axis);
+        rb.AddForce(Vector2.right * speed * axis); //with this mario start running on the field
+        animator.SetInteger("Speed", (int)axis); //setting the speed 
 
 
 
@@ -64,8 +64,10 @@ public class Mario : MonoBehaviour {
     {
         bool inputRight = Input.GetKey("right");
         bool inputLeft = Input.GetKey("left");
+        bool isRunning = animator.GetBool("isRunning") == true;
 
-        if (animator.GetBool("isRunning") == true && axis == 0f && (inputRight || inputLeft)) animator.SetTrigger("RunBack");
+        if (isRunning && axis == 0f && (inputRight || inputLeft))
+            animator.SetTrigger("RunBack");
     }
 
 }
