@@ -67,7 +67,9 @@ public class Mario : MonoBehaviour {
         bool isRunning = animator.GetBool("isRunning") == true;
 
         if (isRunning && axis == 0f && (inputRight || inputLeft))
+        {
             animator.SetTrigger("RunBack");
+        }
     }
 
 }
